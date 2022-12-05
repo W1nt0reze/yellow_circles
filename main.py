@@ -8,7 +8,6 @@ from PyQt5 import uic
 
 
 class MyWidget(QMainWindow):
-    SCREEN_SIZE = [680, 480]
     def __init__(self):
         super().__init__()
         uic.loadUi("UI.ui", self)
