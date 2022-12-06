@@ -12,6 +12,7 @@ class MyWidget(QMainWindow):
         super().__init__()
         uic.loadUi("UI.ui", self)
         self.flag = False
+        self.qp = QPainter()
         self.do_circle.clicked.connect(self.draw)
         self.coords = []
 
@@ -24,11 +25,11 @@ class MyWidget(QMainWindow):
 
     def paintEvent(self, event):
         if self.flag:
-            qp = QPainter()
-            qp.begin(self)
-            qp.setPen(QColor(*self.color))
-            qp.setBrush(QColor(*self.color))
-            self.x, self.y = random.randint(100, 500), random.randint(100, 500)
+            self.qp.begin(self)
+            self.qp.setPen(QColor(*self.color))
+            self.qp.setBrush(QColor(*self.color))
+            self.x = random.randint(100, 500)
+            self.y = random.randint(100, 500)
             if self.figure == 'circle':
                 qp.drawEllipse(self.x, self.y, self.size, self.size)
             qp.end()
